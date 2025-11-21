@@ -2,32 +2,32 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 --
--- Normal mode 
+-- Normal mode
 --
-vim.keymap.set('n', '<leader>s', ':w<CR>')
-vim.keymap.set('n', '<leader>i', ':q<CR>')
-vim.keymap.set('n', '<leader>k', function()
+vim.keymap.set("n", "<leader>s", ":w<CR>", { silent = true })
+vim.keymap.set("n", "<leader>i", ":q<CR>", { silent = true })
+vim.keymap.set("n", "<leader>k", function()
   require("mini.bufremove").delete()
 end)
 
-vim.keymap.set('n', '<leader>t', ':FloatermToggle<CR>')
+vim.keymap.set("n", "<leader>t", ":FloatermToggle<CR>", { silent = true })
 
-vim.keymap.set('n', '<leader>v', ':vsplit<CR>')
-vim.keymap.set('n', '<leader>h', ':split<CR>')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
-vim.keymap.set('n', '<C-h>', '<C-w>h')
-vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { silent = true })
+vim.keymap.set("n", "<leader>h", ":split<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
 
 -- Terminal mode
-vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
-vim.keymap.set('t', '<C-t>', '<C-\\><C-n>:FloatermNew<CR>')
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n>:FloatermNext<CR>')
-vim.keymap.set('t', '<C-h>', '<C-\\><C-n>:FloatermPrev<CR>')
+vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<C-t>", "<C-\\><C-n>:FloatermNew<CR>", { silent = true })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n>:FloatermNext<CR>", { silent = true })
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n>:FloatermPrev<CR>", { silent = true })
 
 -- Diff View
-vim.keymap.set("n", "<leader>do", ":DiffviewOpen<CR>")
-vim.keymap.set("n", "<leader>dc", ":DiffviewClose<CR>")
+vim.keymap.set("n", "<leader>do", ":DiffviewOpen<CR>", { silent = true })
+vim.keymap.set("n", "<leader>dc", ":DiffviewClose<CR>", { silent = true })
 
 -- Harpoon
 local harpoon = require("harpoon")
@@ -50,25 +50,20 @@ vim.keymap.set("n", "<Tab>", function()
 end)
 
 -- File finding
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>eg",
-  ":Telescope file_browser<CR>",
-  { noremap = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>eg", ":Telescope file_browser<CR>", { silent = true, noremap = true })
 
 vim.api.nvim_set_keymap(
   "n",
   "<leader>el",
   ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-  { noremap = true }
+  { noremap = true, silent = true }
 )
 
 -- Find things
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
-vim.keymap.set('n', '<leader>gc', builtin.git_status, {})
-vim.keymap.set('n', '<leader>gs', builtin.git_stash, {})
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
+vim.keymap.set("n", "<leader>gc", builtin.git_status, {})
+vim.keymap.set("n", "<leader>gs", builtin.git_stash, {})

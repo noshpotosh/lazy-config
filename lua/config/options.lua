@@ -5,25 +5,25 @@ vim.opt.relativenumber = true
 -- require('onedark').load()
 
 function line_num()
-    if (vim.v.relnum == 0) then
-        return 'test'
-    else
-        return '%r'
-    end
+  if vim.v.relnum == 0 then
+    return "test"
+  else
+    return "%r"
+  end
 end
 
-vim.opt.guicursor='n-v-c:block-Cursor/lCursor,' ..
-                  'i-ci:ver25-Cursor/lCursor,' ..
-                  've:ver35-Cursor,' ..
-                  'r-cr:hor20-Cursor/lCursor,' ..
-                  'o:hor50-Cursor,' ..
-                  'sm:block-Cursor-blinkwait175-blinkoff150-blinkon175,' ..
-                  'a:blinkwait200-blinkoff500-blinkon500-Cursor/lCursor'
+vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,"
+  .. "i-ci:ver25-Cursor/lCursor,"
+  .. "ve:ver35-Cursor,"
+  .. "r-cr:hor20-Cursor/lCursor,"
+  .. "o:hor50-Cursor,"
+  .. "sm:block-Cursor-blinkwait175-blinkoff150-blinkon175,"
+  .. "a:blinkwait200-blinkoff500-blinkon500-Cursor/lCursor"
 
 vim.opt.wrap = false
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.shiftround = true
 
@@ -34,7 +34,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.opt.colorcolumn = {80,120}
+vim.opt.colorcolumn = { 80, 120 }
 
 vim.opt.splitright = true
 
