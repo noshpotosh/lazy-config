@@ -47,3 +47,5 @@ vim.opt.showcmd = true
 vim.opt.showmode = true
 
 vim.opt.backup = false
+
+vim.g.lazyvim_check_order = false
