@@ -1,17 +1,6 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
-vim.opt.relativenumber = true
--- require('onedark').load()
-
-function line_num()
-  if vim.v.relnum == 0 then
-    return "test"
-  else
-    return "%r"
-  end
-end
-
 vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,"
   .. "i-ci:ver25-Cursor/lCursor,"
   .. "ve:ver35-Cursor,"
@@ -37,6 +26,7 @@ vim.opt.cursorline = true
 vim.opt.colorcolumn = { 80, 120 }
 
 vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
@@ -47,5 +37,3 @@ vim.opt.showcmd = true
 vim.opt.showmode = true
 
 vim.opt.backup = false
-
-vim.g.lazyvim_check_order = false

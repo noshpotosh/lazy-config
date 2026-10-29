@@ -1,6 +1,8 @@
 return {
 	{
 		name = "theme-hotreload",
+		enabled = vim.fn.has("linux") == 1
+			and vim.fn.filereadable(vim.fn.expand("~/.config/omarchy/current/theme/neovim.lua")) == 1,
 		dir = vim.fn.stdpath("config"),
 		lazy = false,
 		priority = 1000,

@@ -1,28 +1,18 @@
--- Come back to this later
-local custom_theme = function()
-  local colors = {
-    black = "#282C34",
-    red = "#E06C75",
-    green = "#98C379",
-    yellow = "#E5C07B",
-    blue = "#61AFEF",
-    purple = "#C678DD",
-    gray = "#56B6C2",
-    lightgray = "#ABB2BF",
-  }
-  return {
-    inactive = {
-      a = { fg = colors.gray, bg = colors.red, gui = "bold" },
-      b = { fg = colors.gray, bg = colors.red },
-      c = { fg = colors.gray, bg = colors.red },
-    },
-  }
+local pink = { fg = "#EEF0F2", bg = "#EF7A85" }
+local theme = {}
+for _, mode in ipairs({ "normal", "insert", "visual", "replace", "command", "terminal", "inactive" }) do
+  theme[mode] = { a = vim.deepcopy(pink), b = vim.deepcopy(pink), c = vim.deepcopy(pink) }
 end
 
 return {
-  'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+  "nvim-lualine/lualine.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
+    options = {
+      theme = theme,
+      component_separators = "",
+      section_separators = "",
+    },
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
@@ -31,5 +21,5 @@ return {
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },
-  }
+  },
 }

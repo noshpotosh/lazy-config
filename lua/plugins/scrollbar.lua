@@ -1,9 +1,11 @@
 return {
   "petertriho/nvim-scrollbar",
-  config = function()
+  dependencies = { "lewis6991/gitsigns.nvim", "kevinhwang91/nvim-hlslens" },
+  config = function(_, opts)
+    require("scrollbar").setup(opts)
     require("scrollbar.handlers.gitsigns").setup()
     require("scrollbar.handlers.search").setup({
-        override_lens = function() end,
+      override_lens = function() end,
     })
   end,
   opts = {},

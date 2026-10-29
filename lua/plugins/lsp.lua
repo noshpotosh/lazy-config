@@ -1,10 +1,18 @@
 return {
   ---------------------------------------------------------------------------
-  -- nvim-cmp: add emoji completion
+  -- LazyVim uses blink.cmp for completion.
   ---------------------------------------------------------------------------
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
+    "saghen/blink.cmp",
+    dependencies = { "moyiz/blink-emoji.nvim" },
+    opts = {
+      sources = {
+        default = { "emoji" },
+        providers = {
+          emoji = { name = "Emoji", module = "blink-emoji" },
+        },
+      },
+    },
   },
 
   ---------------------------------------------------------------------------
@@ -13,22 +21,13 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      opts.ensure_installed = vim.tbl_extend("force", opts.ensure_installed or {}, {
-        "bash",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "regex",
-        "tsx",
-        "typescript",
-        "vim",
-        "yaml",
-      })
+      -- Explicitly register the parser directory in runtimepath, including on Neovim 0.12.
+      opts.install_dir = vim.fn.stdpath("data") .. "/site"
+      -- Current Treesitter uses the JSON parser for JSON with comments.
+      opts.ensure_installed = vim.tbl_filter(function(lang)
+        return lang ~= "jsonc"
+      end, opts.ensure_installed or {})
+      vim.treesitter.language.register("json", "jsonc")
     end,
   },
 
@@ -36,7 +35,7 @@ return {
   -- Mason tools
   ---------------------------------------------------------------------------
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "stylua",
@@ -46,5 +45,13 @@ return {
       },
     },
   },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        python = { "flake8" },
+        sh = { "shellcheck" },
+      },
+    },
+  },
 }
-

@@ -15,6 +15,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- All configured plugins use Git; no LuaRocks packages are needed.
+  rocks = { enabled = false },
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins" },
